@@ -1,14 +1,21 @@
+/**
+ * Title: home.component.css
+ * Author: Diandra McKenzie
+ * Date: 23 September 2020
+ * Description: Home component styling
+ */
+
 .main-welcome {
-    margin-top: 30px;
-  }
-  
-  .title {
     text-align: center;
+    width: 50%;
+    margin-left: 25%;
+  }
+
+  .title {
+    margin-bottom: 25%;
     font-weight: lighter;
   }
-  
+
   .subtitle {
-    text-align: center;
-    font-size: 14px;
+    font-size: 18px;
   }
-  
