@@ -1,0 +1,38 @@
+/**
+ * Title: sign-in.component.css
+ * Author: Diandra McKenzie
+ * Date: 23 September 2020
+ * Description: Sign-in component styling
+ */
+
+.sign-in-container{
+  margin: 10% auto;
+  width: 600px;
+}
+
+.error {
+  color: #D8000C;
+  background-color: #FFD2D2;
+  padding: 2%;
+  text-align: center;
+  font-size: 18px;
+}
+
+.sign-in-container > mat-card-title, mat-card-subtitle, h1, .warning, .form {
+  text-align: center;
+}
+
+.input {
+  width: 350px;
+  font-weight: 700;
+  font-size: 20px;
+  margin-bottom: 10%;
+}
+
+.warning {
+  color: crimson;
+}
+
+.submit {
+  margin-left: 80%;
+}
