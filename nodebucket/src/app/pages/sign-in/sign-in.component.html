@@ -1,0 +1,48 @@
+<!--
+ * Title: sign-in.component.html
+ * Author: Professor Krasso
+ * Date: 23 September 2020
+ * Modified By: Diandra McKenzie
+ * Description: Sign-in component html file
+-->
+
+<div fxLayout="column">
+  <div fxFlex>
+
+    <mat-card class="mat-elevation-z8 sign-in-container">
+
+      <mat-card-title>
+        Employee Sign-in
+      </mat-card-title>
+
+      <mat-card-subtitle>
+        You must enter a valid Employee ID to proceed
+      </mat-card-subtitle>
+
+      <mat-card-content>
+      <div class="error" *ngIf="error">
+        <mat-card-subtitle>
+          {{ error }}
+        </mat-card-subtitle>
+      </div>
+<br />
+
+      <form class="form" [formGroup]="form" (ngSubmit)="signIn(); form.reset();">
+
+            <input matInput
+                  [formControl]="form.controls['empId']"
+                  placeholder="employee id"
+                  class="input" />
+
+
+                    <div>
+                    <h3 class="warning">Employee ID must be a numeric value.</h3>
+                    </div>
+
+          <button class="submit" type="submit" mat-raised-button color="primary" [disabled]="!form.valid">submit</button>
+
+      </form>
+    </mat-card-content>
+    </mat-card>
+  </div>
+</div>
