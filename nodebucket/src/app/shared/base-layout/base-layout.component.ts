@@ -1,3 +1,11 @@
+/**
+ * Title: base-layout.component.ts
+ * Author: Professor Krasso
+ * Date: 23 September 2020
+ * Modified By: Diandra McKenzie
+ * Description: Base-layout component file
+ */
+
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -8,8 +16,11 @@ import { Component, OnInit } from '@angular/core';
 export class BaseLayoutComponent implements OnInit {
 
   year: number = Date.now();
-  
-  constructor() { }
+  title: string;
+
+  constructor() {
+    this.title = "nodebucket";
+   }
 
   ngOnInit(): void {
   }
