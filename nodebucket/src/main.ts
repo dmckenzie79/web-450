@@ -1,3 +1,11 @@
+/**
+ * Title: main.ts
+ * Author: Professor Krasso
+ * Date: 19 September 2020
+ * Modified By: Diandra McKenzie
+ * Description: Main file
+ */
+
 import { enableProdMode } from '@angular/core';
 import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
 
