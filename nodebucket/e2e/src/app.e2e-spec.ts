@@ -1,3 +1,12 @@
+/**
+ * Title: app.e2e-spec.ts
+ * Author: Professor Krasso
+ * Date: 23 September 2020
+ * Modified By: Diandra McKenzie
+ * Description: App workspace file
+ */
+
+
 import { AppPage } from './app.po';
 import { browser, logging } from 'protractor';
 
