@@ -1,3 +1,10 @@
+/**
+ * Title: sign-in.component.spec.ts
+ * Author: Diandra McKenzie
+ * Date: 23 September 2020
+ * Description: Sign-in component spec file
+ */
+
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { SignInComponent } from './sign-in.component';
