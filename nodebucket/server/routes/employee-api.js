@@ -11,14 +11,16 @@
  * Require statements
  */
 const express = require('express');
-const Employee= require('../models/employee');
+const Employee = require('../models/employee');
+const BaseResponse = require('../services/base-response');
+const ErrorResponse = require('../services/error-response');
 
 
 const router= express.Router();
 
 /**
- * FindEmployeeByID
- *
+ * API: FindEmployeeByID
+ * Returns a JSON employee record
  */
 router.get('/:empId', async(req, res) => {
   try {
@@ -56,6 +58,119 @@ router.get('/:empId', async(req, res) => {
       });
   }
 });
+
+/**
+ * API: findAllTasks
+ * Returns a list of JSON task objects
+ */
+router.get('/:empId/tasks', async(req, res) => {
+  try {
+        Employee.findOne({'empId': req.params.empId}, 'empId todo done', function(err, employee) {
+
+        if (err) {
+          console.log(err);
+
+          const mongoDbErrorResponse = new ErrorResponse ('500', 'Internal server error', err);
+
+          res.status(500).send(mongoDbErrorResponse.toObject());
+
+        } else {
+          console.log(employee);
+
+          const employeeTasksResponse = new BaseResponse('200', 'Query successful', employee);
+
+          res.json(employeeTasksResponse.toObject());
+        }
+      });
+
+  } catch(e) {
+
+      console.log(e);
+
+      const errorCatchResponse = new ErrorResponse('500', 'Internal server error', e.message);
+
+          res.status(500).send(errorCatchResponse.toObject());
+
+      }
+  });
+
+  /**
+ * API: createTasks
+ * Posts a list of JSON task objects
+ */
+router.post('/:empId/tasks', async(req, res) => {
+  try {
+        Employee.findOne({'empId': req.params.empId}, function(err, employee) {
+
+        if (err) {
+          console.log(err);
+
+          const createTaskMongoDbErrorResponse = new ErrorResponse ('500', 'Internal server error', err);
+
+          res.status(500).send(createTaskMongoDbErrorResponse.toObject());
+
+        } else {
+          console.log(employee);
+
+          //create s new item object
+
+          const item = {
+              text: req.body.text
+          };
+
+          //push the new item to the ToDo Array
+          employee.todo.push(item);
+
+          employee.save(function (err, updatedEmployee) {
+            if (err) {
+              console.log(err);
+
+              const createTaskOnSaveMongoDbErrorResponse = new ErrorResponse('500', 'Internal server error', err);
+
+              res.status(500).send(createTaskOnSaveMongoDbErrorResponse.toObject());
+            } else {
+
+              console.log(updatedEmployee);
+
+              const createTaskOnSaveSuccessResponse = new BaseResponse('200', 'Successful entry', updatedEmployee);
+
+              res.json(createTaskOnSaveSuccessResponse.toObject());
+
+            }
+
+          });
+        }
+      });
+
+  } catch(e) {
+
+      console.log(e);
+
+      const createTaskCatchErrorResponse = new ErrorResponse('500', 'Internal server error', e.message);
+
+      res.status(500).send(createTaskCatchErrorResponse.toObject());
+
+      }
+  });
+
+  /**
+ * API: updateTasks
+ * Updates a list of JSON task objects
+ */
+
+ router.put('/:empId/tasks', async(req, res) =>{
+   try {
+
+   } catch (e) {
+
+      console.log(e);
+
+      const updateTaskCatchErrorResponse = new ErrorResponse('500', 'Internal server error', e.message);
+
+      res.status(500).send(updateTaskCatchErrorResponse.toObject());
+
+   }
+ });
 
 
 module.exports = router;

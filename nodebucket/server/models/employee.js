@@ -14,7 +14,7 @@
   * employee schema, sprint 2
   */
 
- const employeeSchema = new Schema ({
+let employeeSchema = new Schema ({
     empId: {type: String, unique: true, dropDups: true},
     firstName: {type: String},
     lastName: {type: String},
