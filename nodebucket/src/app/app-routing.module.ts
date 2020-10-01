@@ -28,19 +28,19 @@ const routes: Routes = [
       {
         path: 'about',
         component: AboutComponent
-      },
+      }
     ]
   },
+  {
+    path: 'session',
+    component: AuthLayoutComponent,
+    children: [
       {
-        path: 'session',
-        component: AuthLayoutComponent,
-        children: [
-          {
-            path: 'sign-in',
-            component: SignInComponent
-          }
-        ]
-      },
+        path: 'sign-in',
+        component: SignInComponent
+      }
+    ]
+  }
 ];
 
 @NgModule({

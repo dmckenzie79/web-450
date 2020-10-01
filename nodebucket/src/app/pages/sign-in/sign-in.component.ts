@@ -32,12 +32,13 @@ export class SignInComponent implements OnInit {
   ngOnInit(): void {
     this.form = this.fb.group({
       empId: [null, Validators.compose([Validators.required, Validators.pattern('^[0-9]*$')])]
-    })
+    });
   }
 
 
   signIn() {
     const empId = this.form.controls['empId'].value;
+    console.log(empId);
 
 
     this.http.get('/api/employees/' + empId).subscribe(res => {

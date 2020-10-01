@@ -17,6 +17,7 @@ const bodyParser = require('body-parser');
 const path = require('path');
 const mongoose = require('mongoose');
 const Employee = require('./models/employee'); //get the employees model from the Models directory
+const EmployeeApi = require('./routes/employee-api'); //import the employee API
 
 /**
  * App configurations
@@ -35,7 +36,7 @@ app.use('/', express.static(path.join(__dirname, '../dist/nodebucket')));
  */
 const port = 3000; // server port
 
-// TODO: This line will need to be replaced with your actual database connection string
+// actual database connection string
 const conn = 'mongodb+srv://nodebucket_user:S5FwoXuaVK4QDJpn@cluster-1.6d0ag.mongodb.net/nodebucket?retryWrites=true&w=majority';
 
 /**
@@ -52,47 +53,12 @@ mongoose.connect(conn, {
   console.log(`MongoDB Error: ${err.message}`);
 }); // end mongoose connection
 
-
- /**
- * FindEmployeeByID
- *
+/**
+ * APIs
  */
-app.get('/api/employees/:empId', async(req, res) => {
-  try {
-      /**
-       * Use the mongoose employee model to query MongoDB Atlas by employeeId
-       */
-      Employee.findOne({ 'empId': req.params.empId }, function(err, employee) {
 
-      /**
-       * If there is a database level error, handle by returning a server 500 error
-       */
+ app.use('/api/employees', EmployeeApi);
 
-        if (err) {
-          console.log(err);
-          res.status(500).send({
-            message: 'Internal server error!'
-          });
-        } else {
-
-          /**
-           * If there is no database level errors, return the employee object
-           */
-          console.log(employee);
-          res.json(employee);
-        }
-      });
-
-  } catch(e) {
-      /**
-       * Catch any potential server errors and return a server 500 error
-       */
-      console.log(e);
-      res.status(500).send({
-          message: 'Internal server error!'
-      });
-  }
-});
 
 /**
  * Create and start server

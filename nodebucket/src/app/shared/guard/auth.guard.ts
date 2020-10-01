@@ -7,9 +7,9 @@
  */
 
 import { Injectable } from '@angular/core';
-import { CanActivate, ActivatedRouteSnapshot, Router, RouterStateSnapshot, UrlTree } from '@angular/router';
+import { CanActivate, ActivatedRouteSnapshot, Router, RouterStateSnapshot } from '@angular/router';
 import { CookieService } from 'ngx-cookie-service';
-import { Observable } from 'rxjs';
+
 
 
 
@@ -18,17 +18,17 @@ import { Observable } from 'rxjs';
 })
 
 export class AuthGuard implements CanActivate {
-  constructor(private router: Router, private cookieServer: CookieService) {}
+  constructor(private router: Router, private cookieServer: CookieService) {
+  }
 
-  canActivate( route: ActivatedRouteSnapshot, state: RouterStateSnapshot):
-    Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
+  canActivate( route: ActivatedRouteSnapshot, state: RouterStateSnapshot) {
     const sessionUser = this.cookieServer.get('session_user');
 
     if (sessionUser) {
       return true;
     } else {
 
-      this.router.navigate(['session/sign-in']);
+      this.router.navigate(['/session/sign-in']);
 
       return false;
     }

@@ -35,9 +35,9 @@
                   class="input" />
 
 
-                    <div>
-                    <h3 class="warning">Employee ID must be a numeric value.</h3>
-                    </div>
+                    <mat-error class="numError" *ngIf="form.controls['empId'].hasError('pattern') && form.controls['empId'].touched">
+                    Employee ID must be a numeric value.
+                    </mat-error>
 
           <button class="submit" type="submit" mat-raised-button color="primary" [disabled]="!form.valid">submit</button>
 
