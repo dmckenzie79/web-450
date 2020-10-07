@@ -9,7 +9,7 @@
 import { Component, OnInit } from '@angular/core';
 import { CdkDragDrop, moveItemInArray, transferArrayItem } from '@angular/cdk/drag-drop';
 import { TaskService} from '../../shared/task.service';
-import { HttpClient } from '@angular/common/http';
+import { Item } from '../../shared/item.interface'
 
 @Component({
   selector: 'app-home',
@@ -18,7 +18,7 @@ import { HttpClient } from '@angular/common/http';
 })
 export class HomeComponent implements OnInit {
 
-  //tasks: any;
+  tasks: any;
   todo: Array<Item>;
   done: Array<Item>;
 
@@ -27,11 +27,48 @@ export class HomeComponent implements OnInit {
       this.todo = res['data'].todo;
       this.done = res['data'].done;
     }, err => {
-      console.log(err)
-    })
+      console.log(err);
+    });
+
+     // this.http.get('/api/employees/' + this.sessionUser + '/tasks').subscribe(res => {
+     //   this.tasks = res;
+     //   this.todo = this.tasks.todo;
+     //   this.done = this.tasks.done;
+     //   console.log(this.tasks);
+   //     console.log(this.todo);
+    //  }, err => {
+   //     console.log(err);
+  //    });
    }
 
   ngOnInit(): void {
   }
 
+  /**
+   * Create new task dialog
+   */
+
+  // openCreateTaskDialog() {
+   //  const dialogRef = this.dialog.open(TaskCreateDialogComponent, {
+   //    disableClose: true
+  //   });
+
+   //  dialogRef.afterClosed().subscribe(data => {
+   //    if (data) {
+    //    this.http.post('/api/employees/' + this.sessionUser + '/tasks', {
+  //        text: data.text
+   //      }).subscribe(res => {
+    //      this.tasks = res;
+   //       this.todo = this.tasks.todo;
+   //       this.done = this.tasks.done;
+  //      }, err => {
+ //        console.log(err);
+ //       });
+//      }
+ //    });
+//   }
+
+   /**
+   * Delete task
+   */
 }
