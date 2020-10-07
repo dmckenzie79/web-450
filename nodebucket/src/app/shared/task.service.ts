@@ -19,13 +19,13 @@ export class TaskService {
 
   constructor(private cookieService: CookieService, private http: HttpClient) {
     this.sessionUser = this.cookieService.get('session-user'); //get the logged in empId
-    this.baseUrl = 'http://localhost:3000'; //testing Url for API layer
+    //this.baseUrl = 'http://localhost:3000'; //testing Url for API layer
   }
 /**
  * findAllTasks
  */
 findAllTasks() {
-  return this.http.get('/api/' + this.sessionUser + '/tasks')
+  return this.http.get('/api/employees/' + this.sessionUser + '/tasks')
 }
 
 /**
