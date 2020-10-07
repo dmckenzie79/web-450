@@ -112,7 +112,7 @@ router.post('/:empId/tasks', async(req, res) => {
         } else {
           console.log(employee);
 
-          //create s new item object
+          //create a new item object
 
           const item = {
               text: req.body.text

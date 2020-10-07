@@ -1,6 +1,6 @@
 /**
  * Title: sign-in.component.ts
- * Author: Diandra McKenzie
+ * Author: Professor Krasso
  * Date: 23 September 2020
  * Modified By: Diandra McKenzie
  * Description: Sign-in component file

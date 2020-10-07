@@ -7,6 +7,9 @@
  */
 
 import { Component, OnInit } from '@angular/core';
+import { CdkDragDrop, moveItemInArray, transferArrayItem } from '@angular/cdk/drag-drop';
+import { TaskService} from '../../shared/task.service';
+import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-home',
@@ -15,7 +18,18 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HomeComponent implements OnInit {
 
-  constructor() { }
+  //tasks: any;
+  todo: Array<Item>;
+  done: Array<Item>;
+
+  constructor(private taskService: TaskService) {
+    this.taskService.findAllTasks().subscribe(res => {
+      this.todo = res['data'].todo;
+      this.done = res['data'].done;
+    }, err => {
+      console.log(err)
+    })
+   }
 
   ngOnInit(): void {
   }
