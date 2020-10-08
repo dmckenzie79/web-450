@@ -3,7 +3,7 @@
  * Author: Professor Krasso
  * Date: 28 September 2020
  * Modified By: Diandra McKenzie
- * Description: Item Model file
+ * Description: Item Schema for Employee Model file
  */
 
  const mongoose = require('mongoose');

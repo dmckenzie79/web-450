@@ -47,8 +47,8 @@ const routes: Routes = [
     ]
   },
   {
-    path: '**',
-    redirectTo: 'session/not-found'
+   path: '**',
+   redirectTo : 'session/not-found'
   }
 ];
 
