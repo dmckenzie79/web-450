@@ -28,6 +28,11 @@ import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { CookieService } from 'ngx-cookie-service';
 import { AuthGuard } from './shared/guard/auth.guard';
+import { NotFoundComponent } from './pages/not-found/not-found.component';
+import { MatDividerModule } from '@angular/material/divider';
+import { DragDropModule } from '@angular/cdk/drag-drop';
+import { MatDialogModule } from '@angular/material/dialog';
+import { CreateTaskDialogComponent } from './shared/create-task-dialog/create-task-dialog.component';
 
 @NgModule({
   declarations: [
@@ -36,7 +41,9 @@ import { AuthGuard } from './shared/guard/auth.guard';
     BaseLayoutComponent,
     AuthLayoutComponent,
     AboutComponent,
-    SignInComponent
+    SignInComponent,
+    NotFoundComponent,
+    CreateTaskDialogComponent
   ],
 
   imports: [
@@ -52,7 +59,10 @@ import { AuthGuard } from './shared/guard/auth.guard';
     ReactiveFormsModule,
     MatCardModule,
     MatInputModule,
-    MatFormFieldModule
+    MatFormFieldModule,
+    MatDividerModule,
+    DragDropModule,
+    MatDialogModule
   ],
   providers: [AuthGuard],
   bootstrap: [AppComponent]
