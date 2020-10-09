@@ -97,7 +97,7 @@
               fxLayoutGap="10px"
               class="task-list"
               cdkDropList
-              #todoList="cdkDropList"
+              #doneList="cdkDropList"
               [cdkDropListData]="done"
               [cdkDropListConnectedTo]="[todoList]"
               (cdkDropListDropped)="drop($event)">
@@ -140,19 +140,7 @@
       </mat-card>
 
     </div>
-
-
-
-
-
-
-
-
-
-
-
-
-    </div>
-
   </div>
+</div>
+</div>
 

@@ -14,6 +14,7 @@ const express = require('express');
 const Employee = require('../models/employee');
 const BaseResponse = require('../services/base-response');
 const ErrorResponse = require('../services/error-response');
+const Item = require('../models/item');
 
 
 const router= express.Router();
@@ -58,6 +59,7 @@ router.get('/:empId', async(req, res) => {
       });
   }
 });
+
 
 /**
  * API: findAllTasks
@@ -158,7 +160,7 @@ router.post('/:empId/tasks', async(req, res) => {
  * Updates a JSON task object
  */
 
- router.put('/:empId/tasks', async(req, res) =>{
+ router.put('/:empId/tasks', async(req, res) => {
    try {
 
     Employee.findOne({'empId': req.params.empId}, function(err, employee) {

@@ -23,13 +23,15 @@ import { MatDialog } from '@angular/material/dialog';
 })
 export class HomeComponent implements OnInit {
 
+  empId: string;
   todo: Item[];
   done: Item[];
-  employee :Employee;
+  employee: Employee;
 
-  empId: string;
+
 
   constructor(private taskService: TaskService, private cookieService: CookieService, private dialog: MatDialog) {
+    this.empId = this.cookieService.get('session_user');
     this.taskService.findAllTasks(this.empId).subscribe(res => {
       console.log(`--Server response from findAllTasks--`);
       console.log(res);
@@ -103,7 +105,7 @@ export class HomeComponent implements OnInit {
         }, () => {
         this.todo = this.employee.todo;
         this.done = this.employee.done;
-     });
+     })
    }
   })
 }
@@ -116,7 +118,7 @@ export class HomeComponent implements OnInit {
     if (taskId) {
       console.log(`Task item: ${taskId} was deleted`);
 
-      this.taskService.deleteTask(this.empId, taskId). subscribe(res => {
+      this.taskService.deleteTask(this.empId, taskId).subscribe(res => {
         this.employee = res.data;
       }, err => {
         console.log(err);
