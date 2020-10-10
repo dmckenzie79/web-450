@@ -48,6 +48,6 @@ updateTask(empId: string, todo: Item[], done: Item[]): Observable<any> {
  * deleteTasks
  */
 deleteTask(empId: string, taskId: string): Observable<any> {
-  return this.http.delete('/api/employees/' + empId + '/tasks' + taskId)
+  return this.http.delete('/api/employees/' + empId + '/tasks/' + taskId)
   }
 }

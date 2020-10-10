@@ -1,11 +1,12 @@
 .image {
-  width: 650px;
-  margin-left: 38%;
+  width: 450px;
+  margin-left:38%;
+  margin-top: 5%;
 }
 
 .content {
   text-align: center;
-  font-size: 2em;
+  font-size: 1em;
 }
 
 .home {
