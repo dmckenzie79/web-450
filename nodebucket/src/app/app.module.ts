@@ -34,7 +34,7 @@ import { DragDropModule } from '@angular/cdk/drag-drop';
 import { MatDialogModule } from '@angular/material/dialog';
 import { CreateTaskDialogComponent } from './shared/create-task-dialog/create-task-dialog.component';
 import { MatMenuModule } from '@angular/material/menu';
-import { MatDialogModule} from '@angular/material/dialog';
+
 
 @NgModule({
   declarations: [
