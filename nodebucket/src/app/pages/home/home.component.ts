@@ -31,7 +31,7 @@ export class HomeComponent implements OnInit {
 
 
   constructor(private taskService: TaskService, private cookieService: CookieService, private dialog: MatDialog) {
-    this.empId = this.cookieService.get('session_user');
+    this.empId = this.cookieService.get('session_user'); //gets the active session user
     this.taskService.findAllTasks(this.empId).subscribe(res => {
       console.log(`--Server response from findAllTasks--`);
       console.log(res);
