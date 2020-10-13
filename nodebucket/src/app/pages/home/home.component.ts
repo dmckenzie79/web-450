@@ -63,7 +63,7 @@ export class HomeComponent implements OnInit {
 
       console.log(`Reordered the existing list of task items`);
     } else {
-      transferArrayItem(event.previousContainer.data,
+      transferArrayItem(event.previousContainer.data, // array data
                         event.container.data,
                         event.previousIndex,
                         event.currentIndex);
@@ -90,7 +90,7 @@ export class HomeComponent implements OnInit {
 
   openCreateTaskDialog() {
      const dialogRef = this.dialog.open(CreateTaskDialogComponent, {
-       disableClose: true
+       disableClose: true // cannot click outside dialog to close it
      });
 
      dialogRef.afterClosed().subscribe(data => {
