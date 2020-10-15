@@ -31,12 +31,6 @@ app.use(cors());
 app.use(express.static(path.join(__dirname, '../dist/nodebucket')));
 app.use('/', express.static(path.join(__dirname, '../dist/nodebucket')));
 
-/**
-
-
-* Variables
- */
-const port = 3000; // server port
 
 // actual database connection string
 const conn = 'mongodb+srv://nodebucket_user:S5FwoXuaVK4QDJpn@cluster-1.6d0ag.mongodb.net/nodebucket?retryWrites=true&w=majority';
@@ -65,6 +59,8 @@ mongoose.connect(conn, {
 /**
  * Create and start server
  */
+const port = env.process.PORT|| 3000; // server port
+
 http.createServer(app).listen(port, function() {
   console.log(`Application started and listening on port: ${port}`);
 }); // end http create server function
